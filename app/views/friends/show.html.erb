@@ -1,0 +1,16 @@
+<div class="p-5 mb-4 bg-light rounded-3">
+  <div class="container-fluid py-5">
+    <h1 class="display-2"><%= @friend.first_name %> <%= @friend.last_name %></h1>
+    <p class="col-md-8 fs-4">
+      <strong>Email:</strong> <%= @friend.email %> | 
+      <strong>Phone:</strong> <%= @friend.phone %> |
+      <strong>Twitter:</strong> <%= @friend.twitter %>
+    </p>
+    <br />
+    <div class='d-flex gap-3'>
+      <%= link_to 'Edit', edit_friend_path(@friend), class: 'btn btn-secondary btn-lg' %>
+      <%= link_to 'Delete', @friend, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-lg' %>
+      <%= link_to 'Back', friends_path, class: 'btn btn-dark btn-lg' %>
+    </div>
+  </div>
+</div>

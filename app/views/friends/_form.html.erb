@@ -1,0 +1,61 @@
+<div class='card shadow mb-4'>
+  <div class='card-header'>
+    <h2><%= title %></h2>
+  </div>
+  <div class='card-body px-4 pb-4'>
+    <%= form_with(model: friend) do |form| %>
+      <% if friend.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(friend.errors.count, "error") %> prohibited this friend from being saved:</h2>
+
+          <ul>
+            <% friend.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="mb-3">
+        <%= form.text_field :first_name, class: 'form-control', placeholder: 'First Name' %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.text_field :last_name, class: 'form-control', placeholder: 'Last Name' %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.text_field :email, class: 'form-control', placeholder: 'Email' %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.text_field :phone, class: 'form-control', placeholder: 'Phone Number' %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.text_field :twitter, class: 'form-control', placeholder: 'Twitter' %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.number_field :user_id, id: :friend_user_id, value: current_user.id, class: 'form-control', placeholder: 'User id', type: 'hidden' %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.submit class: 'btn btn-primary' %>
+      </div>
+
+      <% if newOrEdit %>  
+        <div class=''>
+          <%= link_to 'Back', friends_path, class: 'btn btn-secondary' %>
+        </div>
+      <% else %>
+        <div class='d-flex gap-3'>
+          <%= link_to 'Show', @friend, class: 'btn btn-secondary' %>
+          <%= link_to 'Delete', @friend, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+          <%= link_to 'Back', friends_path, class: 'btn btn-dark' %>
+        </div>
+      <% end %>
+
+    <% end %>
+  </div>
+</div>
